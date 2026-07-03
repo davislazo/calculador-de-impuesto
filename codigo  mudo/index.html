@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Impuestos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      width: 350px;
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      text-align: left;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #222;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Calculadora de Impuestos</h1>
+
+    <label for="salario">💰 Salario:</label>
+    <input type="number" id="salario" value="100">
+
+    <label for="tasa">📊 Tasa (%):</label>
+    <input type="number" id="tasa" value="15">
+
+    <label for="region">🌍 Región:</label>
+    <select id="region">
+      <option value="SV">SV (El Salvador)</option>
+      <option value="MX">MX (México)</option>
+      <option value="US">US (Estados Unidos)</option>
+    </select>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <div id="resultado"></div>
+  </div>
+
+  <script src="impuestos.js"></script>
+  <script>
+    function calcular() {
+      let salario = parseFloat(document.getElementById("salario").value);
+      let tasa = parseFloat(document.getElementById("tasa").value);
+      let region = document.getElementById("region").value;
+
+      let resultado = calcularImpuesto(salario, tasa, region);
+      document.getElementById("resultado").innerHTML =
+        "✅ El salario ajustado es: " + resultado;
+    }
+  </script>
+</body>
+</html>
